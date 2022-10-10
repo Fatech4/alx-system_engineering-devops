@@ -12,3 +12,4 @@ Task 10- Write a script that deletes all the regular files (not the directories)
 Task 11- Write a script that counts the number of directories and sub-directories in the current directory.
 Task 12- Create a script that displays the 10 newest files in the current directory.
 Task 13- Create a script that takes a list of words as input and prints only words that appear exactly once.
+Task 14- Display lines containing the pattern “root” from the file /etc/passwd

@@ -10,5 +10,5 @@ service nginx start
 sed -i 's/listen 80 default_server;/listen 80;/' /etc/nginx/sites-available/default
 
 # Serve "Hello World!" at the root endpoint
-echo "Hello World!" >  /var/www/html/index.html
+echo "Hello World!" | sudo tee  /var/www/html/index.html
 service nginx restart

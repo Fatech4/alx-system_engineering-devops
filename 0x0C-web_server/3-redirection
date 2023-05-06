@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Install nginx if it's not already installed
+if ! [ -x "$(command -v nginx)" ]; then
+  apt-get -y update
+  apt-get -y install nginx
+fi
+
+# Configure nginx to redirect /redirect_me to another page with a 301 Moved Permanently status code
+sed -i '/listen 80;/a \
+    location /redirect_me {\
+        return 301 https://www.example.com/;\
+    }' /etc/nginx/sites-available/default
+
+# Restart nginx
+service nginx restart

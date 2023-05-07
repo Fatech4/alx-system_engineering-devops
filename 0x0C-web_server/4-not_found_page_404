@@ -6,7 +6,7 @@ if ! command -v nginx &> /dev/null; then
 fi
 
 # Create a custom 404 page with the string "Ceci n'est pas une page"
-echo "Ceci n'est pas une page" > /usr/share/nginx/html/404.html
+echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/404.html
 
 # Configure nginx to use the custom 404 page for 404 errors
 sed -i '/^\s*server\s*{/a \    error_page 404 /404.html;\n    location = /404.html {\n        internal;\n        root /usr/share/nginx/html;\n    }' /etc/nginx/sites-available/default

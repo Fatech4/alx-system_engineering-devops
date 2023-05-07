@@ -13,7 +13,7 @@ fi
 
 # Configure nginx to redirect /redirect_me to another page with a 301 Moved Permanently status code
 
-sed -i '/listen 80;/a location \/redirect_me { return 301 https:\/\/www.example.com\/; }' /etc/nginx/sites-available/default
+sed -i '/listen \[::\]:80 default_server;/a location \/redirect_me { return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4; }' /etc/nginx/sites-available/default
 
 
 

@@ -12,4 +12,4 @@ sed -i '/listen \[::\]:80 default_server;/a rewrite ^/redirect_me$ https://www.y
 
 # Restart nginx
 
-service nginx restar
+service nginx restart

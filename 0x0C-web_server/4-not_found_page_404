@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Step 1: Create custom 404 error page
+cat << EOF > /var/www/html/404.html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>404 Not Found</title>
+  </head>
+  <body>
+    <h1>404 Not Found</h1>
+    <p>Ceci n'est pas une page.</p>
+  </body>
+</html>
+EOF
+
+# Step 2: Configure Nginx to use the custom 404 error page
+sed -i '/^\s*server\s*{/a \    error_page 404 /404.html;\n    location = /404.html {\n        internal;\n    }' /etc/nginx/sites-available/default
+
+# Step 3: Restart Nginx
+service nginx restart
+

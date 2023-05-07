@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # Install nginx if it's not already installed
 if ! command -v nginx &> /dev/null; then
   apt-get -y update

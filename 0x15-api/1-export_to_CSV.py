@@ -2,10 +2,10 @@
 """ Write a Python script that, using this REST API, for a given
 employee ID, returns information about his/her TODO list progress.
 """
-import urllib.request
+import csv
 import json
 import sys
-import csv
+import urllib.request
 
 
 def fetch_employee_todo_progress(employee_id):

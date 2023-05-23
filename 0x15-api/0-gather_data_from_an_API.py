@@ -2,9 +2,9 @@
 """ Write a Python script that, using this REST API, for a given
 employee ID, returns information about his/her TODO list progress.
 """
-import urllib.request
 import json
 import sys
+import urllib.request
 
 
 def fetch_employee_todo_progress(employee_id):
@@ -29,10 +29,10 @@ def fetch_employee_todo_progress(employee_id):
                       task["completed"]]
 
         # Display output
-        print(f"Employee {employee_name} is done with tasks\
-              ({len(done_tasks)}/{total_tasks}): ")
+        print("Employee {} is done with tasks({}/{}):"
+              .format(employee_name, len(done_tasks), total_tasks))
         for task in done_tasks:
-            print(f"\t{task}")
+            print("\t {}".format(task))
     except Exception as e:
         print(f"An error occurred: {str(e)}")
 

@@ -24,7 +24,7 @@ def fetch_employee_todo_progress(employee_id):
         todos_data = json.loads(todos_response.read())
 
         # Extract relevant information
-        employee_name = employee_data["name"]
+        employee_name = employee_data["username"]
         total_tasks = len(todos_data)
         done_tasks = [task["title"] for task in todos_data if
                       task["completed"]]

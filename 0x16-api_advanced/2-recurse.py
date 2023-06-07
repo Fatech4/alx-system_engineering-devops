@@ -25,9 +25,9 @@ def recurse(subreddit, after=None, hot_list=None):
         Safari/537.3"
     }
     response = requests.get(url, params=params, headers=headers)
-    data = response.json()
-    query = data['data']['after']
     if response.status_code == 200:
+        data = response.json()
+        query = data['data']['after']
         if data.get(query):
             after = data['data']['after']
             posts = (data['data']['children'])

@@ -5,7 +5,7 @@ the number of subscribers for a given subreddit:
 import requests
 
 
-def def number_of_subscribers(subreddit):
+def number_of_subscribers(subreddit):
     """ function that uses the Reddit API to retrieve the number of
     subscribers for a given subreddit:
     """

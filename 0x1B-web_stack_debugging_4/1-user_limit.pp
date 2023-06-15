@@ -3,6 +3,7 @@ user { 'holberton':
   ensure     => present,
   managehome => true,
   shell      => '/bin/bash',
+  limit      => { 'nofile' => { 'hard' => 10000, 'soft' => 10000 } },
 }
 
 file { '/etc/security/limits.d/holberton.conf':

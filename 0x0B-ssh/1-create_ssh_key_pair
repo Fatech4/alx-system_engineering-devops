@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 #Write a Bash script that creates an RSA key pair.
-openssl genrsa -aes256 -passout pass:betty -out school.key 4096
-openssl rsa -in school.key -passin pass:betty -pubout -out school.pub
+ssh-keygen -t rsa -b 4096 -f school -N "betty"

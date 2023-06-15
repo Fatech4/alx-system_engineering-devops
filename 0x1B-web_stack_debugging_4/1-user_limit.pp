@@ -1,3 +1,4 @@
+#Puppet manifest to change OS configuration 
 user { 'holberton':
   ensure     => present,
   managehome => true,

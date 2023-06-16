@@ -1,19 +1,20 @@
 # Client configuration file (w/ Puppet)
-file_line { 'Turn off passwd auth':
-  path  => '/etc/ssh/ssh_config',
-  line  => 'PasswordAuthentication no',
-  match => '^#PasswordAuthentication',
-}
-
-file_line { 'Declare identity file':
-  path    => '/etc/ssh/ssh_config',
-  line    => 'IdentityFile ~/.ssh/school',
-  match   => '^#IdentityFile',
-  require => Package['openssh-client'],
+file { '/etc/ssh/sshd_config':
+  ensure  => file,
+  owner   => 'root',
+  group   => 'root',
+  mode    => '0644',
+  content => "
+    # SSH client configuration
+    Host *
+      IdentityFile ~/.ssh/school
+      PasswordAuthentication no
+  ",
+  notify  => Service['ssh'],
 }
 
 service { 'ssh':
-  ensure  => 'running',
+  ensure  => running,
   enable  => true,
-  require => Package['openssh-server'],
+  require => File['/etc/ssh/sshd_config'],
 }

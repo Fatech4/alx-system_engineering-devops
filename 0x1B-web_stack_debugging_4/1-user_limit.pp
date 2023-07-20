@@ -1,27 +1,10 @@
-#Puppet manifest to change OS configuration 
-user { 'holberton':
-  ensure     => present,
-  managehome => true,
-  shell      => '/bin/bash',
-  limit      => { 'nofile' => { 'hard' => 10000, 'soft' => 10000 } },
+# change system wide limits
+exec { 'Change soft limit':
+  command  => 'sudo sed -i "s/holberton\ssoft.*/holberton\tsoft\tnofile\t10000/" /etc/security/limits.conf',
+  provider => shell,
 }
 
-file { '/etc/security/limits.d/holberton.conf':
-  ensure  => present,
-  content => "holberton hard nofile 10000\nholberton soft nofile 10000\n",
-  owner   => 'root',
-  group   => 'root',
-  mode    => '0644',
+exec { 'Change hard limit':
+  command  => 'sudo sed -i "s/holberton\shard.*/holberton\thard\tnofile\t100000/" /etc/security/limits.conf',
+  provider => shell,
 }
-
-exec { 'reload_limits':
-  command     => 'sysctl --system',
-  refreshonly => true,
-  subscribe   => File['/etc/security/limits.d/holberton.conf'],
-}
-
-service { 'ssh':
-  ensure => running,
-  enable => true,
-}
-
